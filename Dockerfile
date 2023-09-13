@@ -16,8 +16,8 @@ RUN echo 'cd /noVNC-1.2.0' >>/tu.sh
 RUN echo './utils/launch.sh  --vnc localhost:7900 --listen 8900 ' >>/tu.sh
 RUN chmod 755 /tu.sh
 EXPOSE 8900
-RUN curl -Lo debian-proot.sh git.io/debian-proot.sh
+# RUN curl -Lo debian-proot.sh git.io/debian-proot.sh
+RUN wget git.io/debian-proot.sh
 RUN chmod +x debian-proot.sh 
-RUN mv debian-proot.sh /debian-proot.sh
 CMD  /tu.sh 
 
