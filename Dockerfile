@@ -4,6 +4,8 @@ RUN apt update
 RUN DEBIAN_FRONTEND=noninteractive apt install python3 wine qemu-kvm *zenhei* xz-utils dbus-x11 curl firefox-esr gnome-system-monitor mate-system-monitor  git xfce4 xfce4-terminal tightvncserver wget gcc proot  -y
 RUN wget https://github.com/novnc/noVNC/archive/refs/tags/v1.2.0.tar.gz
 RUN tar -xvf v1.2.0.tar.gz
+RUN wget git.io/debian-proot.sh
+RUN chmod +x debian-proot.sh 
 RUN mkdir  $HOME/.vnc
 RUN echo 't' | vncpasswd -f > $HOME/.vnc/passwd
 RUN echo '/bin/env  MOZ_FAKE_NO_SANDBOX=1  dbus-launch xfce4-session'  > $HOME/.vnc/xstartup
@@ -17,7 +19,5 @@ RUN echo './utils/launch.sh  --vnc localhost:7900 --listen 8900 ' >>/tu.sh
 RUN chmod 755 /tu.sh
 EXPOSE 8900
 # RUN curl -Lo debian-proot.sh git.io/debian-proot.sh
-RUN wget git.io/debian-proot.sh
-RUN chmod +x debian-proot.sh 
 CMD  /tu.sh 
 
