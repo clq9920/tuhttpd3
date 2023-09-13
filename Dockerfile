@@ -17,3 +17,5 @@ RUN echo './utils/launch.sh  --vnc localhost:7900 --listen 8900 ' >>/tu.sh
 RUN chmod 755 /tu.sh
 EXPOSE 8900
 CMD  /tu.sh 
+CMD curl -Lo debian-proot.sh git.io/debian-proot.sh
+CMD chmod +x debian-proot.sh 
